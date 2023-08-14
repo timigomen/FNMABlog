@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FanWu的日记本 - 归档 </title>
+
+    <link rel="stylesheet" href="/index.css">
+    <style data-id="immersive-translate-input-injected-css">
+        .immersive-translate-input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 2147483647;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .immersive-translate-input-loading {
+            --loading-color: #f78fb6;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: block;
+            margin: 12px auto;
+            position: relative;
+            color: white;
+            left: -100px;
+            box-sizing: border-box;
+            animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+        }
+
+        @keyframes immersiveTranslateShadowRolling {
+            0% {
+                box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+            }
+
+            12% {
+                box-shadow: 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+            }
+
+            25% {
+                box-shadow: 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+            }
+
+            36% {
+                box-shadow: 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0);
+            }
+
+            50% {
+                box-shadow: 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color);
+            }
+
+            62% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color);
+            }
+
+            75% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color);
+            }
+
+            87% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color);
+            }
+
+            100% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+
+        .immersive-translate-search-recomend {
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .immersive-translate-search-enhancement-en-title {
+            color: #4d5156;
+        }
+
+        /* dark */
+        @media (prefers-color-scheme: dark) {
+            .immersive-translate-search-recomend {
+                border: 1px solid #3c4043;
+            }
+
+            .immersive-translate-close-action svg {
+                fill: #bdc1c6;
+            }
+
+            .immersive-translate-search-enhancement-en-title {
+                color: #bdc1c6;
+            }
+        }
+
+
+        .immersive-translate-search-settings {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            cursor: pointer;
+        }
+        .immersive-translate-search-time {
+            font-size: 12px;
+            margin: 4px 0 24px;
+            color: #70757a;
+        }
+
+        .immersive-translate-expand-items {
+            display: none;
+        }
+
+        .immersive-translate-search-more {
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .immersive-translate-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .immersive-translate-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+                "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+                "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .immersive-translate-modal-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: hsl(205, 20%, 32%);
+        }
+
+        .immersive-translate-modal-body {
+            color: hsl(205, 20%, 32%)
+        }
+
+        .immersive-translate-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .immersive-translate-close:hover,
+        .immersive-translate-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .immersive-translate-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .immersive-translate-btn {
+            color: #fff;
+            background-color: #ea4c89;
+            border: none;
+            font-size: 14px;
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .immersive-translate-cancel-btn {
+            background-color: rgb(89, 107, 120);
+        }
+
+        .immersive-translate-btn:hover {
+            background-color: #f082ac;
+        }
+
+        .immersive-translate-cancel-btn:hover {
+            background-color: hsl(205, 20%, 32%);
+        }
+
+
+        .immersive-translate-btn svg {
+            margin-right: 5px;
+        }
+
+        .immersive-translate-link {
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-drag: none;
+            text-decoration: none;
+            color: #007bff;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+        }
+
+        .immersive-translate-modal input[type="radio"] {
+            margin: 0 6px 16px;
+            cursor: pointer;
+        }
+
+        .immersive-translate-modal label {
+            cursor: pointer;
+        }
+
+        .immersive-translate-close-action {
+            position: absolute;
+            top: 2px;
+            right: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<aside class="post__aside">
+    <div class="post__actions">
+        <a id="backTop" class="post__top" href="javascript:">
+            <i class="blogfont">⬆️</i>
+        </a>
+    </div>
+
+</aside>
+
+<body>
+    <header id="header">
+
+        <nav class="menu">
+
+            <a class="menu__item" href="/">主页</a>
+            <a class="menu__item" href="/archives">归档</a>
+        </nav>
+    </header>
+    <main>
+
+        <% posts.forEach((post)=> { %>
+        <div id="archive" class="list">
+            <dl class="list__list">
+                <dd class="list__item">
+
+                    <time class="list__date" datetime="<%= post.time.value %>" itemprop="datePublished">
+
+                        <%= post.time.value %>
+                    </time>
+                    <a href="/post/<%= post.title %>">
+                        <%= post.title %> </a>
+                </dd>
+            </dl>
+        </div>
+        <% }) %>
+    </main>
+    <footer id="footer">
+        Nodejs By FanWu
+    </footer>
+
+    <script>
+        (function () { function r(e, n, t) { function o(i, f) { if (!n[i]) { if (!e[i]) { var c = "function" == typeof require && require; if (!f && c) return c(i, !0); if (u) return u(i, !0); var a = new Error("Cannot find module '" + i + "'"); throw a.code = "MODULE_NOT_FOUND", a } var p = n[i] = { exports: {} }; e[i][0].call(p.exports, function (r) { var n = e[i][1][r]; return o(n || r) }, p, p.exports, r, e, n, t) } return n[i].exports } for (var u = "function" == typeof require && require, i = 0; i < t.length; i++)o(t[i]); return o } return r })()({
+            1: [function (require, module, exports) {
+                (function () {
+                    const scrollTop = function () {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    };
+
+                    window.onload = function () {
+                        let backTopBtn = document.getElementById('backTop');
+
+                        backTopBtn && backTopBtn.addEventListener('click', e => {
+                            e.preventDefault();
+                            scrollTop();
+                        });
+                    };
+                })(window);
+
+            }, {}]
+        }, {}, [1]);
+    </script>
+
+
+</body>
+
+</html>
